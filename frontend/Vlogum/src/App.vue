@@ -169,7 +169,7 @@ export default {
         text: 'Memories',
         children: [
           { text: 'My Memories', href: '' },
-          { text: 'New Momory' }
+          { text: 'New Memory' }
         ],
         model: false
       }
