@@ -1,5 +1,5 @@
 <template>
-  <v-layout class="px-3 py-3" row-wrap>
+  <v-layout class="px-3 py-3 text-xs-center">
     <v-flex xs12>
       <upload-box></upload-box>
       <post-box :notices="posts"></post-box>

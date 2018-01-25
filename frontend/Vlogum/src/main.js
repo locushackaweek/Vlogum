@@ -5,8 +5,8 @@ import App from './App'
 import router from './router'
 import Vuetify from 'vuetify'
 import Vuex from 'vuex'
-import('../node_modules/vuetify/dist/vuetify.min.css') // Ensure you are using css-loader
 
+import('../node_modules/vuetify/dist/vuetify.min.css') // Ensure you are using css-loader
 Vue.use(Vuex)
 Vue.use(Vuetify)
 Vue.config.productionTip = false
