@@ -7,9 +7,23 @@
         right
         app
         temporary
+        width="350"
       >
-          <v-list dense>
-          </v-list>
+        <v-list three-line>
+          <template v-for="item in notItems">
+            <v-subheader v-if="item.header" v-text="item.header"></v-subheader>
+            <v-divider v-else-if="item.divider" v-bind:inset="item.inset"></v-divider>
+            <v-list-tile avatar v-else v-bind:key="item.title" @click="">
+              <v-list-tile-avatar>
+                <img v-bind:src="item.avatar"/>
+              </v-list-tile-avatar>
+              <v-list-tile-content>
+                <v-list-tile-title v-html="item.title"></v-list-tile-title>
+                <v-list-tile-sub-title v-html="item.subtitle"></v-list-tile-sub-title>
+              </v-list-tile-content>
+            </v-list-tile>
+          </template>
+        </v-list>
       </v-navigation-drawer>
 
     <v-toolbar
@@ -34,7 +48,7 @@
             <v-btn @click.stop="drawerRight = !drawerRight" icon>
               <v-icon>notifications</v-icon>
             </v-btn>
-            <v-btn icon large>
+            <v-btn icon large router to="/vlogs">
               <v-avatar size="45px" tile>
                 <img style="width:45px;height:45px;border-radius:100%"
                      class="ma-2"
@@ -174,7 +188,20 @@ export default {
         ],
         model: false
       }
+    ],
+    notItems: [
+      { header: 'Today' },
+      { avatar: 'https://randomuser.me/api/portraits/men/1.jpg', title: 'Brunch this weekend?', subtitle: "<span class='grey--text text--darken-2'>Ali Connors</span> — I'll be in your neighborhood doing errands this weekend. Do you want to hang out?" },
+      { divider: true, inset: true },
+      { avatar: 'https://randomuser.me/api/portraits/men/2.jpg', title: 'Summer BBQ <span class="grey--text text--lighten-1">4</span>', subtitle: "<span class='grey--text text--darken-2'>to Alex, Scott, Jennifer</span> — Wish I could come, but I'm out of town this weekend." },
+      { divider: true, inset: true },
+      { avatar: 'https://randomuser.me/api/portraits/women/3.jpg', title: 'Oui oui', subtitle: "<span class='grey--text text--darken-2'>Sandra Adams</span> — Do you have Paris recommendations? Have you ever been?" },
+      { divider: true, inset: true },
+      { avatar: 'https://randomuser.me/api/portraits/women/2.jpg', title: 'Birthday gift', subtitle: "<span class='grey--text text--darken-2'>Trevor Hansen</span> — Have any ideas about what we should get Heidi for her birthday?" },
+      { divider: true, inset: true },
+      { avatar: 'https://randomuser.me/api/portraits/men/5.jpg', title: 'Recipe to try', subtitle: "<span class='grey--text text--darken-2'>Britta Holt</span> — We should eat this: Grate, Squash, Corn, and tomatillo Tacos." },
     ]
+
   }),
   props: {
     source: String

@@ -52,18 +52,6 @@ export const store = new Vuex.Store({
           }],
           poster: 'https://surmon-china.github.io/vue-quill-editor/static/images/surmon-3.jpg'
         }
-      },
-      {
-        posted_by: 'Ugly Guy',
-        profile_picture: 'https://randomuser.me/api/portraits/women/12.jpg',
-        post_time: 'Just Now',
-        notice: 'This is a Notice'
-      },
-      {
-        posted_by: 'gyAni KT Moh',
-        profile_picture: 'https://randomuser.me/api/portraits/women/15.jpg',
-        post_time: 'Just Now',
-        notice: 'I am a don'
       }
     ]
   },
