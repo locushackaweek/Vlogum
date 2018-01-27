@@ -1,10 +1,10 @@
 <template>
   <div>
     <v-flex elevation-1
-            class="my-4 rounded"
+            class="my-5"
             v-for="notice in notices"
             :key="notice.posted_by"
-            xs10 offset-xs1
+            xs8 offset-xs2
             width="853"
     >
       <v-flex  class="white">
@@ -42,25 +42,34 @@
             </v-menu>
           </div>
         </v-layout>
-        <v-layout class="px-3 pb-3" row wrap>
-          <div class="f13">{{notice.notice}} </div>
+        <v-layout>
+          <v-flex xs12>
+            <video-player class="vjs-custom-skin"
+                :options="notice.video"
+                @ready="playerReadied">
+            </video-player>
+          </v-flex>
         </v-layout>
-          <v-layout>
-            <v-flex xs12>
-              <video-player class="vjs-custom-skin"
-                  :options="notice.video"
-                  @ready="playerReadied">
-              </video-player>
-            </v-flex>
-          </v-layout>
-        <v-layout class="px-3 pb-3 mt-4" row wrap>
-          <div class="grey--text f13">
-          <v-icon light class='pr-1 f14'>thumb_up</v-icon>
-            Like
+
+
+
+        <v-layout class="px-3 pb-3 mt-2" row wrap>
+          <div class="blue--text">
+            <v-btn @click="isBlue = !isBlue"  flat icon class="pa-0 ma-0 mr-0">
+              <v-icon light :class="['pr-1 display-1', { 'blue--text': isBlue }]">star</v-icon>
+            </v-btn>
+          </div>
+          <v-spacer></v-spacer>
+
+          <v-spacer></v-spacer>
+          <div class="blue--text">
+            <v-btn @click="comments = !comments"  flat icon class="pa-0 ma-0 mr-0">
+              <v-icon light class="'pr-1 display-1">comment</v-icon>
+            </v-btn>
           </div>
         </v-layout>
       </v-flex>
-      <v-layout class="pa-0" row wrap>
+      <v-layout class="pa-0" row wrap v-if="comments">
         <v-flex v-if="notice.comments"
                 v-for="comment in notice.comments"
                 row-wrap
@@ -82,7 +91,7 @@
                 </v-list-tile-content>
               </v-list-tile>
               <v-spacer></v-spacer>
-              <v-btn flat small fab><v-icon> delete </v-icon></v-btn>
+              <v-btn flat small fab><v-icon class="grey--text"> delete </v-icon></v-btn>
             </v-layout>
           </v-list>
         </v-flex>
@@ -104,7 +113,9 @@ export default {
     dropDownItems: [
       {title: 'Delete', icon: 'delete'},
       {title: 'Edit', icon: 'edit'}
-    ]
+    ],
+    isBlue: false,
+    comments: false
   }),
   components: {
     videoPlayer

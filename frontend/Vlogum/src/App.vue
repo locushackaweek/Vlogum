@@ -31,9 +31,6 @@
             style="max-width: 500px; min-width: 128px"
           ></v-text-field>
           <div class="d-flex align-center" style="margin-left: auto">
-            <v-btn icon>
-              <v-icon>apps</v-icon>
-            </v-btn>
             <v-btn @click.stop="drawerRight = !drawerRight" icon>
               <v-icon>notifications</v-icon>
             </v-btn>
@@ -136,7 +133,7 @@
     </v-navigation-drawer>
     </div>
     <v-content>
-      <v-container class="pa-0" fill-height flex align-center justify-center>
+      <v-container class="pa-0 grey lighten-3" fill-height flex align-center justify-center>
         <router-view/>
       </v-container>
     </v-content>

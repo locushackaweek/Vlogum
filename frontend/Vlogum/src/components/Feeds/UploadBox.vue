@@ -15,7 +15,7 @@
           </v-flex>
         </v-layout>
     </v-card>
-    <v-flex class="px-1 py-1" xs12>
+    <v-flex class="px-1 py-1 grey lighten-4" xs12>
       <v-layout row wrap>
         <v-flex>
           <div class="text-xs-left">

@@ -10,7 +10,10 @@
 <script>
 import UploadBox from './UploadBox'
 import PostBox from './PostBox'
+import axios from 'axios'
+
 export default {
+
   data: () => ({
     posts: [
       {
@@ -34,7 +37,7 @@ export default {
           playbackRates: [0.7, 1.0, 1.5, 2.0],
           sources: [{
             type: 'video/mp4',
-            src: 'http://vjs.zencdn.net/v/oceans.mp4'
+            src: 'ftp://110.44.116.71/a.webm'
           }],
           poster: 'https://surmon-china.github.io/vue-quill-editor/static/images/surmon-1.jpg'
         }
@@ -94,6 +97,13 @@ export default {
       }
     ]
   }),
+  mounted () {
+    axios.get(`ftp://110.44.116.71/post.json`)
+      .then(response => {
+        alert(response)
+      })
+  },
+
   components: {
     UploadBox,
     PostBox

@@ -18,34 +18,6 @@
           </v-flex>
         </v-flex>
       </v-flex>
-
-      <v-flex xs12>
-       <v-layout>
-          <v-flex xs12 sm6 offset-sm3>
-            <br>
-            <v-card>
-              <v-flex fluid v-bind="{ [`grid-list-${size}`]: true }">
-                <v-layout row wrap>
-                  <v-flex
-                    xs4
-                    v-for="n in 9"
-                    :key="n"
-                  >
-                    <v-card flat tile>
-                      <v-card-media
-                        :src="`https://unsplash.it/150/300?image=${Math.floor(Math.random() * 100) + 1}`"
-                        height="150px"
-                      >
-                      </v-card-media>
-                    </v-card>
-                  </v-flex>
-                </v-layout>
-              </v-flex>
-            </v-card>
-          </v-flex>
-        </v-layout>
-       </v-flex>
-
     </v-flex>
   </v-layout>
 </template>
@@ -56,7 +28,7 @@ import { videoPlayer } from 'vue-video-player'
 import VCardTitle from 'vuetify/src/components/VCard/VCardTitle'
 export default {
   data: () => ({
-    size: 'sm',
+    size: 'xs',
     items: [
       { text: 'Extra small (1px)', value: 'xs' },
       { text: 'Small (4px)', value: 'sm' },
