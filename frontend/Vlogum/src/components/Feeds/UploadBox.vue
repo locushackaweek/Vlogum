@@ -1,5 +1,5 @@
 <template>
-  <v-flex elevation-1 xs11 offset-xs1>
+  <v-flex elevation-1 xs10 offset-xs1>
     <v-card light style="box-shadow:none">
         <v-layout row wrap>
           <v-flex xs12>
