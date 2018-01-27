@@ -4,26 +4,41 @@
         <v-layout row wrap>
           <v-flex xs12>
             <v-flex xs12>
-              <v-text-field
-                label="Share Something  "
-                full-width
-                multi-line
-                hide-details
-                style="height:100px"
-              ></v-text-field>
+              <vue-clip class="pa-4" :options="options">
+                <template slot="clip-uploader-action">
+                  <div>
+                    <div class="dz-message">
+                      <v-icon class="display-4"> file_upload </v-icon>
+                      <h2> Click or Drag and Drop files here upload </h2>
+                    </div>
+                  </div>
+                </template>
+
+                <template slot="clip-uploader-body" scope="props">
+                  <div v-show="showFiles" v-for="file in props.files" :key="file">
+                    <span class="blue--text headline">
+                      <v-icon class="blue--text"> video_label</v-icon>
+                      {{ file.name }} </span>
+                  </div>
+                </template>
+
+              </vue-clip>
             </v-flex>
           </v-flex>
         </v-layout>
     </v-card>
-    <v-flex class="px-1 py-1 grey lighten-4" xs12>
+    <v-progress-linear
+      v-show="showProgress"
+      v-bind:indeterminate="query"
+      v-bind:query="true"
+      v-model="value"
+      v-bind:active="show"
+      class="my-0"
+    ></v-progress-linear>
+    <v-flex class="px-1 py-0 grey lighten-4" xs12>
       <v-layout row wrap>
-        <v-flex>
-          <div class="text-xs-left">
-            <v-btn small fab class="ma-1 white"><v-icon class="f15">camera_alt</v-icon></v-btn>
-          </div>
-        </v-flex>
         <v-flex class="text-xs-right">
-          <v-btn color="light-blue darken-1 white--text">Post</v-btn>
+          <v-btn @click='queryAndIndeterminate()' color="light-blue darken-1 white--text">Merge</v-btn>
         </v-flex>
       </v-layout>
     </v-flex>
@@ -32,7 +47,31 @@
 
 <script>
 export default {
-  data: () => ({})
+  data: () => ({
+    options: {
+      url: 'https://up.uploadfiles.io/upload',
+      paramName: 'file'
+    },
+    value: 0,
+    query: false,
+    show: true,
+    interval: {},
+    showProgress: false,
+    showFiles: true
+  }),
+  methods: {
+    queryAndIndeterminate () {
+      this.query = true
+      this.show = true
+      this.showProgress = true
+      setTimeout(function () {
+        this.query = false
+        this.show = false
+        this.showProgress = false
+        this.showFiles = false
+      }.bind(this), 3000)
+    }
+  }
 }
 </script>
 

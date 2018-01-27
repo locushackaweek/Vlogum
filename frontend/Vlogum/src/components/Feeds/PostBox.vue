@@ -50,9 +50,6 @@
             </video-player>
           </v-flex>
         </v-layout>
-
-
-
         <v-layout class="px-3 pb-3 mt-2" row wrap>
           <div class="blue--text">
             <v-btn @click="isBlue = !isBlue"  flat icon class="pa-0 ma-0 mr-0">

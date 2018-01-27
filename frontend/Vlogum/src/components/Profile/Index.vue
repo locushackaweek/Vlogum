@@ -17,6 +17,16 @@
             <v-btn small class="blue" dark> Message </v-btn>
           </v-flex>
         </v-flex>
+
+        <v-layout wrap class="pa-4">
+          <v-flex xs6 v-for="video in videos" :key="video.poster" class="px-2 py-2">
+            <video-player class="vjs-custom-skin"
+                :options="video"
+                @ready="playerReadied">
+            </video-player>
+          </v-flex>
+        </v-layout>
+
       </v-flex>
     </v-flex>
   </v-layout>
@@ -35,6 +45,34 @@ export default {
       { text: 'Medium (8px)', value: 'md' },
       { text: 'Large (16px)', value: 'lg' },
       { text: 'Extra large (24px)', value: 'xl' }
+    ],
+    videos: [
+      {
+        height: '500',
+        autoplay: false,
+        muted: false,
+        fluid: true,
+        language: 'en',
+        playbackRates: [0.7, 1.0, 1.5, 2.0],
+        sources: [{
+          type: 'video/mp4',
+          src: 'https://ftp.gnu.org/video/A_Digital_Media_Primer_For_Geeks-360p.webm'
+        }],
+        poster: 'https://surmon-china.github.io/vue-quill-editor/static/images/surmon-1.jpg'
+      },
+      {
+        height: '500',
+        autoplay: false,
+        muted: false,
+        fluid: true,
+        language: 'en',
+        playbackRates: [0.7, 1.0, 1.5, 2.0],
+        sources: [{
+          type: 'video/mp4',
+          src: 'http://7xkwa7.media1.z0.glb.clouddn.com/sample_video_L'
+        }],
+        poster: 'https://surmon-china.github.io/vue-quill-editor/static/images/surmon-3.jpg'
+      }
     ]
   }),
   components: {
