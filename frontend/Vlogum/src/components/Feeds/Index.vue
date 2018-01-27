@@ -24,13 +24,40 @@ export default {
             post_time: 'Just Now',
             comment: 'Hi Cute Girl'
           }
-        ]
+        ],
+        video: {
+          height: '500',
+          autoplay: false,
+          muted: false,
+          fluid: true,
+          language: 'en',
+          playbackRates: [0.7, 1.0, 1.5, 2.0],
+          sources: [{
+            type: 'video/mp4',
+            src: 'http://7xkwa7.media1.z0.glb.clouddn.com/sample_video_L'
+
+          }],
+          poster: 'https://surmon-china.github.io/vue-quill-editor/static/images/surmon-1.jpg'
+        }
       },
       {
         posted_by: 'Adsfds Hsdfs',
         profile_picture: 'https://randomuser.me/api/portraits/women/4.jpg',
         post_time: 'Just Now',
-        notice: 'sdfsdf fghgdh wfsdf dfgdf g sadsd f '
+        notice: 'sdfsdf fghgdh wfsdf dfgdf g sadsd f ',
+        video: {
+          height: '500',
+          autoplay: false,
+          muted: false,
+          fluid: true,
+          language: 'en',
+          playbackRates: [0.7, 1.0, 1.5, 2.0],
+          sources: [{
+            type: 'video/mp4',
+            src: 'http://7xkwa7.media1.z0.glb.clouddn.com/sample_video_L'
+          }],
+          poster: "https://surmon-china.github.io/vue-quill-editor/static/images/surmon-3.jpg"
+        }
       },
       {
         posted_by: 'Ugly Guy',

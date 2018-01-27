@@ -11,41 +11,43 @@
           <v-list dense>
           </v-list>
       </v-navigation-drawer>
-    <v-toolbar
-      color="blue darken-3"
-      dark
-      app
-      clipped-right
-      fixed
-      class="nav"
-      height="54"
-    >
-      <v-toolbar-title>Feeds</v-toolbar-title>
-      <v-spacer></v-spacer>
-      <v-layout row align-center style="max-width: 650px">
-        <v-text-field
-          placeholder="Search..."
-          single-line
-          append-icon="search"
-          :append-icon-cb="() => {}"
-          class="white--text"
-          hide-details
-        ></v-text-field>
-      </v-layout>
-      <v-spacer></v-spacer>
 
-       <div class="d-flex align-center" style="margin-left: auto">
-        <v-btn icon>
-          <v-icon>apps</v-icon>
-        </v-btn>
-         <v-btn router to="/login" icon>
-          <v-icon>perm_identity</v-icon>
-        </v-btn>
-        <v-btn @click.stop="drawerRight = !drawerRight" icon>
-          <v-icon>notifications</v-icon>
-        </v-btn>
-      </div>
+    <v-toolbar
+          color="blue darken-3"
+          dark
+          app
+          clipped-left
+          fixed
+        >
+          <v-toolbar-title :style="$vuetify.breakpoint.smAndUp ? 'width: 300px; min-width: 250px' : 'min-width: 72px'" class="ml-0 pl-3">
+            <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
+            <span class="hidden-xs-only">Vlogum</span>
+          </v-toolbar-title>
+          <v-text-field
+            light
+            solo
+            prepend-icon="search"
+            placeholder="Search"
+            style="max-width: 500px; min-width: 128px"
+          ></v-text-field>
+          <div class="d-flex align-center" style="margin-left: auto">
+            <v-btn icon>
+              <v-icon>apps</v-icon>
+            </v-btn>
+            <v-btn @click.stop="drawerRight = !drawerRight" icon>
+              <v-icon>notifications</v-icon>
+            </v-btn>
+            <v-btn icon large>
+              <v-avatar size="45px" tile>
+                <img style="width:45px;height:45px;border-radius:100%"
+                     class="ma-2"
+                     src="https://avatars0.githubusercontent.com/u/17315781?s=460&v=4"
+                />
+              </v-avatar>
+            </v-btn>
+          </div>
     </v-toolbar>
+
     <div>
     <v-navigation-drawer
       fixed
@@ -55,6 +57,7 @@
       app
       width="250"
       mini-variant.sync="false"
+      v-model='drawer'
     >
       <v-list dense style="padding-top:0px">
         <v-list-tile class="avatar-holder" avatar>
@@ -146,6 +149,7 @@ export default {
   name: 'app',
   data: () => ({
     drawerRight: false,
+    drawer: true,
     right: false,
     left: null,
     items: [
@@ -203,7 +207,7 @@ export default {
     width:100%;
     border-radius:0;
     padding:20px 0px;
-    background: url('./assets/Images/avatar-bg.jpeg');
+    background: url('http://demo.geekslabs.com/materialize/v2.3/layout03/images/user-profile-bg.jpg');
     background-size: cover;
   }
 

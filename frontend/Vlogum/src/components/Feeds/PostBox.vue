@@ -1,11 +1,13 @@
 <template>
   <div>
     <v-flex elevation-1
-            class="my-4"
+            class="my-4 rounded"
             v-for="notice in notices"
             :key="notice.posted_by"
+            xs10 offset-xs1
+            width="853"
     >
-      <v-flex class="white">
+      <v-flex  class="white">
         <v-layout row wrap>
           <v-list>
             <v-flex><v-list-tile avatar>
@@ -44,9 +46,9 @@
           <div class="f13">{{notice.notice}} </div>
         </v-layout>
           <v-layout>
-            <v-flex xs6>
+            <v-flex xs12>
               <video-player class="vjs-custom-skin"
-                  :options="playerOptions"
+                  :options="notice.video"
                   @ready="playerReadied">
               </video-player>
             </v-flex>
@@ -102,54 +104,22 @@ export default {
     dropDownItems: [
       {title: 'Delete', icon: 'delete'},
       {title: 'Edit', icon: 'edit'}
-    ],
-    playerOptions: {
-      height: '360',
-      autoplay: false,
-      muted: false,
-      language: 'en',
-      playbackRates: [0.7, 1.0, 1.5, 2.0],
-      sources: [{
-        type: "video/mp4",
-        // mp4
-        src: "http://vjs.zencdn.net/v/oceans.mp4",
-        // webm
-        // src: "https://cdn.theguardian.tv/webM/2015/07/20/150716YesMen_synd_768k_vp8.webm"
-      }],
-      poster: "https://surmon-china.github.io/vue-quill-editor/static/images/surmon-1.jpg"
-    }
+    ]
   }),
   components: {
     videoPlayer
   },
-  mounted() {
+  mounted () {
     console.log('this is current player instance object', this.player)
   },
   computed: {
-    player() {
+    player () {
       return this.$refs.videoPlayer.player
     }
   },
   methods: {
-    // listen event
-    onPlayerPlay(player) {
-      // console.log('player play!', player)
-    },
-    onPlayerPause(player) {
-      // console.log('player pause!', player)
-    },
-    // ...player event
-
-    // or listen state event
-    playerStateChanged(playerCurrentState) {
-      // console.log('player current update state', playerCurrentState)
-    },
-
-    // player is ready
-    playerReadied(player) {
+    playerReadied (player) {
       console.log('the player is readied', player)
-      // you can use it to do something...
-      // player.[methods]
     }
   }
 }
@@ -180,6 +150,10 @@ export default {
 
   .f10{
     font-size: 10px !important;
+  }
+
+  .rounded{
+    border-radius: 10px;
   }
 
 </style>
